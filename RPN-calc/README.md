@@ -1,0 +1,2 @@
+# Reverse Polish Notation Calculator
+Code kata written in Kotlin solving the [reverse polish notation calculator kata](https://www.reddit.com/r/dailyprogrammer/comments/5c5jx9/20161109_challenge_291_intermediate_reverse/).
