@@ -1,3 +1,5 @@
+import com.sun.xml.internal.fastinfoset.util.StringArray
+import sun.jvm.hotspot.debugger.cdbg.Sym
 import java.util.*
 import kotlin.system.exitProcess
 
@@ -17,83 +19,63 @@ class Stack<Any> {
     }
 }
 
-class Expression(private var data : Stack<ExpressionItem>) {
+class Expression {
+    val data = Stack<Symbol>()
+
+    fun addSymbol(s: Symbol) {
+        data.push(s)
+    }
 }
 
-class ExpressionItem(var item : String) {
+interface Symbol {
+    val symbol : String
 }
 
-fun main(args: Array<String>) {
-    var line = readLine()
+class Number(override val symbol: String) : Symbol {
+    val value = symbol.toDouble()
+}
 
-    while (true) {
-        if (line == "exit" || line.isNullOrBlank()) {
-            exitProcess(0)
-        } else {
-            val expr = if (line != null) parseExpression(line) else break
+class Operator(override val symbol: String) : Symbol {
+    val opType = OpType.valueOf(symbol)
 
-            var i = 0;
-            var stack = Stack<Double>()
-            while (stack.size() > 0) {
-                val item = expr[i]
-                if (isOperand(item)) {
-                    if (item == "!") {
-                        stack.push(factorial(stack.pop().toInt()).toDouble())
-                    } else {
-                        val eval = eval(stack.pop(), stack.pop(), item)
-                        if (eval == null) {
-                            stack.push(0.0)
-                        } else {
-                            stack.push(eval)
-                        }
-                    }
-                } else {
-                    stack.push(item.toDouble());
-                }
+    enum class OpType(val operator: String) {
+        PLUS("+"),
+        MINUS("-"),
+        MULTIPLY("*"),
+        DIVIDE("/"),
+        EXP("^"),
+        FACT("!");
 
-                i++;
+        companion object {
+            private val map = OpType.values().map { it.operator to OpType.valueOf(it.name) }.toMap()
+            fun getType(operator: String) = map[operator]
+
+            fun getOpStrings() : Array<String> {
+                return Array<String>(OpType.values().size, { i -> OpType.values()[i].operator })
+            }
+        }
+    }
+}
+
+object ExpressionParser {
+    fun parseExpression(expr: String) : Expression {
+        val exprArr = expr.split(" ")
+
+        val expression = Expression()
+
+        val operators = Operator.OpType.getOpStrings()
+        for (c in exprArr) {
+            if (operators.contains(c)) {
+                expression.addSymbol(Operator(c))
+            } else {
+                expression.addSymbol(Number(c))
             }
         }
 
-        line = readLine()
+        return expression
     }
 }
 
-fun parseExpression(expr: String): ArrayList<String> {
-    return ArrayList<String>(expr.split(" "))
-}
-
-fun isOperand(c: String): Boolean {
-    when (c) {
-        "+", "-", "*", "/", "//", "!", "%", "^" -> return true
-        else -> return false
-    }
-}
-
-fun eval(a: Double, b: Double, o: String): Double? {
-    when (o) {
-        "+" -> return a + b
-        "-" -> return a - b
-        "*" -> return a * b
-        "/" -> return a / b
-        "%" -> return a % b
-        "^" -> return Math.pow(a, b)
-        else -> return null
-    }
-}
-
-fun factorial(n: Int): Int {
-    if (n == 0 || n == 1) {
-        return 1;
-    } else {
-        var product = 0
-        var counter = n
-
-        while (counter > 0) {
-            product *= counter
-            counter--
-        }
-
-        return product
-    }
+fun main(args: Array<String>) {
+    
 }
