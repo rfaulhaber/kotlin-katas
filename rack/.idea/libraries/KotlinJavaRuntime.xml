@@ -1,0 +1,31 @@
+<component name="libraryTable">
+  <library name="KotlinJavaRuntime">
+    <CLASSES>
+      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime.jar!/" />
+      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-reflect.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/spek-idea-plugin/lib/jopt-simple-5.0.3.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/spek-idea-plugin/lib/junit-platform-commons-1.0.0-M2.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/spek-idea-plugin/lib/junit-platform-engine-1.0.0-M2.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/spek-idea-plugin/lib/junit-platform-launcher-1.0.0-M2.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/spek-idea-plugin/lib/kotlin-reflect-1.0.3.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/spek-idea-plugin/lib/kotlin-runtime-1.0.4.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/spek-idea-plugin/lib/kotlin-stdlib-1.0.4.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/spek-idea-plugin/lib/opentest4j-1.0.0-M1.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/spek-idea-plugin/lib/spek-api-1.0.89.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/spek-idea-plugin/lib/spek-junit-platform-engine-1.0.89.jar!/" />
+      <root url="jar://$APPLICATION_PLUGINS_DIR$/spek-idea-plugin/lib/tooling-0.3.0.jar!/" />
+      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-test.jar!/" />
+      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-annotation-processing.jar!/" />
+      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-build-common-test.jar!/" />
+      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-build-common.jar!/" />
+      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-compiler.jar!/" />
+      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-preloader.jar!/" />
+      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-runner.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-runtime-sources.jar!/" />
+      <root url="jar://$KOTLIN_BUNDLED$/lib/kotlin-jslib-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
