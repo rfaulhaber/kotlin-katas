@@ -1,11 +1,12 @@
 import org.jetbrains.spek.api.Spek
 import org.jetbrains.spek.api.dsl.given
 import org.jetbrains.spek.api.dsl.it
+import rack.Rack
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class RackTest : Spek({
-    given("A rack of letters") {
+    given("a rack of letters") {
         val rack = Rack("ladilmy")
 
         it("should contain a word made up of given letters") {

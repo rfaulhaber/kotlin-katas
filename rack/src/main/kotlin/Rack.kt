@@ -1,3 +1,5 @@
+package rack
+
 class Rack(val letters: String) {
     fun contains(word: String) : Boolean {
         val lettersCopy = Array(letters.length, Int::toString).toMutableList()
