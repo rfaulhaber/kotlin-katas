@@ -1,27 +1,38 @@
 package rack
 
-import java.util.*
-
 class Rack(val letters: String) {
-    fun contains(word: String) : Boolean {
-        val lettersCopy = Array(letters.length, { i -> letters[i].toString()}).toMutableList()
+    private val wildCard = "?"
+
+    fun contains(word: String): Boolean {
+        val lettersCopy = Array(letters.length, { i -> letters[i].toString() }).toMutableList()
 
         for (c in word) {
             val s = c.toString()
 
             if (lettersCopy.contains(s)) {
                 lettersCopy.removeAt(lettersCopy.indexOf(s))
-            } else if (lettersCopy.contains("?")) {
-                lettersCopy.removeAt(lettersCopy.indexOf("?"))
+            } else if (lettersCopy.contains(wildCard)) {
+                lettersCopy.removeAt(lettersCopy.indexOf(wildCard))
             } else {
-                return false;
+                return false
             }
         }
 
         return true
     }
 
-//    fun findLongest(word: String) : String {
-//
-//    }
+    fun findLongest(): String {
+        val wordArrays = WordIndex.index.values
+
+        var longest = ""
+
+        for (array in wordArrays) {
+            array
+                    .asSequence()
+                    .filter { this.contains(it) && it.length > longest.length }
+                    .forEach { longest = it }
+        }
+
+        return longest;
+    }
 }
